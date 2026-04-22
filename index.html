@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,13 +71,118 @@
         </main>
 
         <footer>
-            <p>&copy; 2026 Soft Studio. All rights reserved.</p>
+            <p>2026 Deepthi Konakanchi</p>
         </footer>
     </div>
 
     <script>
         const chars = "ABCDEFGHJKMNPQRSTUVWXY3456789#%&*+";
         const targetText = "DEEPTHI KONAKANCHI";
+        const displayElement = document.getElementById("scramble-text");
+        let iteration = 0;
+
+        const interval = setInterval(() => {
+            displayElement.innerText = targetText
+                .split("")
+                .map((letter, index) => {
+                    if (index < iteration) return targetText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                })
+                .join("");
+
+            if (iteration >= targetText.length) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    document.body.classList.add("loaded");
+                }, 600);
+            }
+            iteration += 1 / 3;
+        }, 50);
+    </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepthi Konakanchi | UC Berkeley EECS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="scramble-wrapper">
+            <h1 id="scramble-text">000000</h1>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <nav>
+            <div class="nav-content">
+                <a href="index.html" class="logo">DEEPTHI KONAKANCHI•EECS</a>
+                <div class="nav-links">
+                    <a href="about.html">About Me</a>
+                    <a href="art.html">Art Portfolio</a>
+                    <a href="resume.html" class="cta-pill">Resume</a>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section class="hero">
+                <h1 class="hero-text">
+                    Engineering <span class="blue-text">logic</span> <br> 
+                    through <span class="pink-text">pastel</span> lenses.
+                </h1>
+            </section>
+
+            <section class="grid-container" id="work">
+                <div class="project-item project-sky">
+                    <div class="project-preview"></div>
+                    <div class="project-meta">
+                        <h2>Neural Canvas</h2>
+                        <p>Machine Learning — CS189</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-peach">
+                    <div class="project-preview"></div>
+                    <div class="project-meta">
+                        <h2>Cal Robotics</h2>
+                        <p>Hardware Integration</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-lilac">
+                    <div class="project-preview"></div>
+                    <div class="project-meta">
+                        <h2>Berkeley Mobile</h2>
+                        <p>Full Stack Dev</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-lemon">
+                    <div class="project-preview"></div>
+                    <div class="project-meta">
+                        <h2>Data Structures</h2>
+                        <p>Visualizing CS61B</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>UC Berkeley Electrical Engineering & Computer Sciences &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const chars = "ABCDEFGHJKMNPQRSTUVWXY3456789#%&*+";
+        const targetText = "CAL•EECS"; // Scramble lands on your major
         const displayElement = document.getElementById("scramble-text");
         let iteration = 0;
 
