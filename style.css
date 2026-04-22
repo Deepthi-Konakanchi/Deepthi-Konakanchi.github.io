@@ -1,8 +1,12 @@
 :root {
-    --bg: #0f172a;
-    --accent: #8b5cf6;
-    --glass: rgba(255, 255, 255, 0.05);
-    --text: #f8fafc;
+    --bg-color: #fff9fb;
+    --text-color: #5d576b;
+    /* Pastel Palette */
+    --mint: #e2f0cb;
+    --lilac: #e5dbff;
+    --peach: #ffecd2;
+    --sky: #d1eeff;
+    --accent: #ffb7b2;
 }
 
 * {
@@ -12,117 +16,116 @@
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
-    overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Quicksand', sans-serif; /* Rounded fonts work best for pastel */
+    letter-spacing: -0.02em;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 40px;
 }
 
-/* Floating Glass Nav */
-.glass-nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 800px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px 30px;
-    border-radius: 100px;
+/* Nav Styling */
+.pastel-nav {
+    padding: 30px 0;
+}
+
+.flex-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
 }
 
-.nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
     color: var(--accent);
 }
 
-/* Hero Section */
-.hero-creative {
-    padding: 180px 0 80px;
+.links a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-pill {
+    background: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.btn-pill:hover {
+    transform: scale(1.05);
+}
+
+/* Typography */
+.intro {
     text-align: center;
+    padding: 80px 0;
 }
 
-.hero-creative h1 {
-    font-size: clamp(3rem, 8vw, 5rem);
-    line-height: 1.1;
-    margin-bottom: 20px;
+.intro h1 {
+    font-size: 4rem;
+    color: #333;
+    line-height: 1;
 }
 
-.text-gradient {
-    background: linear-gradient(to right, #8b5cf6, #d946ef);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.highlight {
+    color: var(--accent);
+    font-style: italic;
 }
 
-/* Bento Grid Layout */
-.bento-grid {
+/* The Pastel Grid */
+.pastel-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 200px);
-    gap: 20px;
-    padding-bottom: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
 }
 
-.card {
-    background: var(--glass);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 30px;
-    position: relative;
-    transition: transform 0.4s ease, border-color 0.4s;
-    cursor: pointer;
+.p-card {
+    padding: 40px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-    background: rgba(139, 92, 246, 0.1);
+.p-card span {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
 }
 
-.card-wide { grid-column: span 2; }
-.card-tall { grid-row: span 2; }
-
-/* Background Blob Animation */
-.blob {
-    position: fixed;
-    top: -10%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(0,0,0,0) 70%);
-    z-index: -1;
-    animation: move 20s infinite alternate;
+.p-card h3 {
+    margin-top: 10px;
+    font-size: 1.4rem;
 }
 
-@keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(-200px, 200px); }
+.p-card:hover {
+    transform: translateY(-5px);
+    background: white !important;
+    border-color: inherit;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .bento-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
-    .card-wide, .card-tall { grid-column: auto; grid-row: auto; }
+/* Color Classes */
+.mint { background-color: var(--mint); border-color: var(--mint); }
+.lilac { background-color: var(--lilac); border-color: var(--lilac); }
+.peach { background-color: var(--peach); border-color: var(--peach); }
+.sky { background-color: var(--sky); border-color: var(--sky); }
+
+footer {
+    text-align: center;
+    padding-bottom: 50px;
+    font-weight: 600;
+    opacity: 0.6;
 }
