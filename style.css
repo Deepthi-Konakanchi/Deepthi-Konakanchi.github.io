@@ -1,7 +1,8 @@
+/*
 :root {
     --bg-color: #fff9fb;
     --text-color: #5d576b;
-    /* Pastel Palette */
+
     --mint: #e2f0cb;
     --lilac: #e5dbff;
     --peach: #ffecd2;
@@ -18,7 +19,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Quicksand', sans-serif; /* Rounded fonts work best for pastel */
+    font-family: 'Quicksand', sans-serif;
     letter-spacing: -0.02em;
 }
 
@@ -28,7 +29,7 @@ body {
     padding: 0 40px;
 }
 
-/* Nav Styling */
+
 .pastel-nav {
     padding: 30px 0;
 }
@@ -65,7 +66,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Typography */
+
 .intro {
     text-align: center;
     padding: 80px 0;
@@ -82,7 +83,7 @@ body {
     font-style: italic;
 }
 
-/* The Pastel Grid */
+
 .pastel-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -117,7 +118,7 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.03);
 }
 
-/* Color Classes */
+
 .mint { background-color: var(--mint); border-color: var(--mint); }
 .lilac { background-color: var(--lilac); border-color: var(--lilac); }
 .peach { background-color: var(--peach); border-color: var(--peach); }
@@ -128,4 +129,144 @@ footer {
     padding-bottom: 50px;
     font-weight: 600;
     opacity: 0.6;
+}
+*/
+
+/* Color Palette */
+:root {
+    --bg-white: #fafafa;
+    --text-dark: #2d3436;
+    --pastel-blue: #d1e9ff;
+    --pastel-pink: #ffdce5;
+    --pastel-purple: #e5dbff;
+    --pastel-yellow: #fef5c8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.2;
+    overflow-x: hidden;
+}
+
+/* Nav */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 40px;
+    z-index: 100;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    margin-left: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.cta-pill {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.hero-text {
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+
+.blue-text { color: #74b9ff; }
+.pink-text { color: #fab1a0; }
+
+/* The "Ravi" Grid */
+.grid-container {
+    padding: 0 8% 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px 40px;
+}
+
+.project-item {
+    cursor: pointer;
+}
+
+.project-preview {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    margin-bottom: 25px;
+}
+
+/* Individual Pastel Backgrounds for Projects */
+.project-sky .project-preview { background-color: var(--pastel-blue); }
+.project-peach .project-preview { background-color: var(--pastel-pink); }
+.project-lilac .project-preview { background-color: var(--pastel-purple); }
+
+.project-item:hover .project-preview {
+    transform: scale(0.98);
+}
+
+.project-meta h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+.project-meta p {
+    color: #a0a0a0;
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+/* Project 2 Offset (to make it look less like a boring grid) */
+@media (min-width: 768px) {
+    .project-item:nth-child(even) {
+        margin-top: 150px;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .hero-text {
+        font-size: 3.5rem;
+    }
 }
