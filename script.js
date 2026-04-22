@@ -1,5 +1,5 @@
 const chars = "ABCDEFGHJKMNPQRSTUVWXY3456789#%&*+";
-const targetText = "STUDIO";
+const targetText = "DEEPTHI KONAKANCHI";
 const displayElement = document.getElementById("scramble-text");
 
 let iteration = 0;
