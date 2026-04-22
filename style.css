@@ -132,10 +132,9 @@ footer {
 }
 */
 
-/* Color Palette */
 :root {
     --bg-white: #fafafa;
-    --text-dark: #2d3436;
+    --text-dark: #1a1a1a;
     --pastel-blue: #d1e9ff;
     --pastel-pink: #ffdce5;
     --pastel-purple: #e5dbff;
@@ -151,12 +150,36 @@ footer {
 body {
     background-color: var(--bg-white);
     color: var(--text-dark);
-    font-family: 'Inter', -apple-system, sans-serif;
-    line-height: 1.2;
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
-/* Nav */
+/* --- LOADER SECTION --- */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* This cubic-bezier creates the snappy Aino reveal effect */
+    transition: transform 1.2s cubic-bezier(0.8, 0, 0.1, 1);
+}
+
+#scramble-text {
+    font-family: monospace;
+    font-size: clamp(2rem, 10vw, 5rem);
+    color: var(--pastel-pink);
+    letter-spacing: 10px;
+    font-weight: 400;
+}
+
+.loaded #loader {
+    transform: translateY(-100%);
+}
+
+/* --- NAVIGATION --- */
 nav {
     position: fixed;
     top: 0;
@@ -183,18 +206,20 @@ nav {
     text-decoration: none;
     color: var(--text-dark);
     margin-left: 30px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .cta-pill {
     background: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
-/* Hero Section */
+/* --- HERO SECTION --- */
 .hero {
     height: 100vh;
     display: flex;
@@ -203,70 +228,96 @@ nav {
 }
 
 .hero-text {
-    font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 700;
-    letter-spacing: -0.05em;
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    /* Entrance animation */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1) 0.8s;
+}
+
+.loaded .hero-text {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .blue-text { color: #74b9ff; }
 .pink-text { color: #fab1a0; }
 
-/* The "Ravi" Grid */
+/* --- BENTO/EDITORIAL GRID --- */
 .grid-container {
-    padding: 0 8% 100px;
+    padding: 0 8% 150px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px 40px;
+    gap: 100px 50px;
 }
 
 .project-item {
     cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.loaded .project-item {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project-preview {
     width: 100%;
     aspect-ratio: 4 / 5;
-    border-radius: 20px;
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-    margin-bottom: 25px;
+    border-radius: 30px;
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    margin-bottom: 30px;
 }
 
-/* Individual Pastel Backgrounds for Projects */
+.project-item:hover .project-preview {
+    transform: scale(0.97);
+}
+
+/* Pastel Assignments */
 .project-sky .project-preview { background-color: var(--pastel-blue); }
 .project-peach .project-preview { background-color: var(--pastel-pink); }
 .project-lilac .project-preview { background-color: var(--pastel-purple); }
-
-.project-item:hover .project-preview {
-    transform: scale(0.98);
-}
+.project-lemon .project-preview { background-color: var(--pastel-yellow); }
 
 .project-meta h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
 }
 
 .project-meta p {
-    color: #a0a0a0;
-    margin-top: 5px;
+    color: #999;
+    margin-top: 8px;
     text-transform: uppercase;
     font-size: 0.7rem;
-    letter-spacing: 1px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 }
 
-/* Project 2 Offset (to make it look less like a boring grid) */
-@media (min-width: 768px) {
+/* Offset Grid Logic (Ravi style) */
+@media (min-width: 769px) {
     .project-item:nth-child(even) {
-        margin-top: 150px;
+        margin-top: 180px;
     }
 }
 
-/* Mobile Responsiveness */
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 100px 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.4;
+}
+
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-    .hero-text {
-        font-size: 3.5rem;
-    }
+    .grid-container { grid-template-columns: 1fr; gap: 60px; }
+    .hero-text { font-size: 3.8rem; }
+    nav { padding: 20px; }
 }
